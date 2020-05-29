@@ -1,0 +1,53 @@
+.dialog_body div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.dialog_body input{
+    height: 30px;
+    background: rgba(255, 255, 255, 0.7);
+    border: #e4e4e4 solid 0.7px;
+    margin-left: 15px;
+    border-radius: 20px;
+    text-indent: 1em;
+}
+
+.forgot_pwd{
+    width: 80%;
+    font-size: 12px;
+    color: rgba(17, 168, 126, 0.7);
+    align-content: end;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.dialog_body button{
+    background: rgba(17, 168, 126, 0.7);
+    border: 0px;
+    height: 30px;
+    width: 90px;
+    color: #fff;
+    margin: 10px 10px 0 10px;
+    border-radius: 20px;
+}
+
+.warning{
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    color: #ff4845;
+    font-size: 12px;
+    text-align: left;
+    display: none;
+}
+
+.time{
+    font-size: 12px;
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+    vertical-align: bottom;
+}

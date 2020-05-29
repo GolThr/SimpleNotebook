@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'TsangerXuanSanM-W03';
+    src: url("/fonts/TsangerXuanSanM-W03.ttf");
+}
+
+body{
+    font-family: TsangerXuanSanM-W03;
+}

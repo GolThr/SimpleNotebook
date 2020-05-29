@@ -1,0 +1,41 @@
+.index_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(17, 168, 126, 0.7);
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.logo img{
+    height: 65px;
+    width: 65px;
+    margin-right: 20px;
+}
+
+.dialog_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 50px 130px;
+    border: rgba(17, 168, 126, 0.8) solid 20px;
+}
+
+.dialog_label{
+    font-size: 30px;
+    color: #000;
+    padding: 0;
+    margin: 0 0 20px 0;
+}

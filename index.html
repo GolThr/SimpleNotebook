@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单记事本</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="styles/global_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/index_style.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/header_style.css" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript" src="js/header.js"></script>
+
+    <div class="notebook_display">
+        <div class="notebook_left">
+            <table class="notebook_table_left" border="0" cellspacing="0" cellpadding="0" style="width: 100%">
+                <tr>
+                    <td colspan="2">
+                        <div class="list_header">
+                            <img class="add_btn" id="add_btn" src="images/ic_add.png" alt="add" onmouseover="onAddBtn();" onmouseleave="leaveAddBtn();" onclick="onAddNoteBtn();">
+                            <input class="search_input" type="text" name="search_str" placeholder="在本子 记事本 中搜索..." onfocus="this.select()">
+                            <img class="search_btn" id="search_btn" src="images/ic_search.png" alt="search" onmouseover="onSearchBtn();" onmouseleave="leaveSearchBtn();">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="note_item" height="70">
+                    <td align="center"><img class="note_ico" src="images/notes.png" alt="note_ico"></td>
+                    <td align="left">
+                        <table cellspacing="3">
+                            <tr><td><h5 class="note_title">使用说明</h5></td></tr>
+                            <tr><td><p class="note_info">欢迎来到简单记事本！...</p></td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <span class="left_span"></span>
+        </div>
+
+        <div class="notebook_right">
+            <div class="notebook_home_header">
+                <span class="greeting"><%=greeting%>好，<%=CurrentUser.getNickname()%>。</span>
+                <span><%=today%></span>
+            </div>
+            <div class="home_btn_line">
+                <div class="home_btn_item home_btn_add" onclick="onAddNoteBtn();">
+                    <img class="home_btn" src="images/ic_add_home.png" alt="add"/>
+                    <span>记事</span>
+                </div>
+                <div class="home_btn_item home_btn_books">
+                    <img class="home_btn" src="images/ic_note_home.png" alt="notes"/>
+                    <span>本子</span>
+                </div>
+            </div>
+            <div class="home_todo_list">
+                <span class="home_title">看看今天都要做哪些事呢？</span>
+                <div class="nothing_todo">
+                    <img class="nothing_todo_icon" src="images/ic_nothing_todo.png" alt="nothingToDo"/>
+                    <span class="nothing_todo_text">今天还没有要做的事情哦</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="add_dialog_pop" id="add_dialog_pop" style="display: none">
+        <div class="add_dialog_body" id="add_dialog_body">
+            <img class="add_note_icon add_pop_inner" src="images/notes.png" alt="icon"/>
+            <span class="add_note_icon_mask add_pop_inner" onmouseover="onMask()" onmouseleave="leaveMask()"></span>
+
+            <input class="add_note_title add_pop_inner" type="text" AUTOCOMPLETE="off" value="新建记事" onfocus="this.select()">
+            <button class="add_note_submit add_pop_inner">创建</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function onAddBtn() {
+            document.getElementById("add_btn").src = "images/ic_add_green.png";
+        }
+        function leaveAddBtn() {
+            $("#add_btn").attr("src", "images/ic_add.png");
+        }
+        function onSearchBtn() {
+            $("#search_btn").attr("src", "images/ic_search_green.png");
+        }
+        function leaveSearchBtn() {
+            $("#search_btn").attr("src", "images/ic_search.png");
+        }
+        function onMask() {
+            $(".add_note_icon_mask").text("换图标");
+        }
+        function leaveMask() {
+            $(".add_note_icon_mask").text("");
+        }
+        function onAddNoteBtn() {
+            $("#add_dialog_pop").fadeIn("fast");
+            $("#add_dialog_body").animate({width:'300px', height:'300px'}, "fast", function () {
+                $(".add_pop_inner").fadeIn("fast");
+            })
+        }
+        $("#add_dialog_pop").click(function () {
+            $(".add_pop_inner").hide();
+            $("#add_dialog_body").animate({width:'1px', height:'1px'}, "fast")
+            $("#add_dialog_pop").fadeOut("fast");
+        })
+        $("#add_dialog_body").click(function (event) {
+            event.stopPropagation();
+        })
+
+    </script>
+
+</body>
+</html>

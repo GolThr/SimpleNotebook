@@ -1,0 +1,249 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: TsangerXuanSanM-W03;
+}
+
+.notebook_display{
+    display: flex;
+    flex-direction: row;
+}
+
+/*notebook_left*/
+.notebook_left{
+    position: absolute;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background: rgb(240, 255, 255);
+    z-index: 1;
+}
+
+.list_header{
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.add_btn{
+    width: 19px;
+    height: 19px;
+    content: url("../images/ic_add.png");
+}
+
+.search_btn{
+    width: 20px;
+    height: 20px;
+    content: url("../images/ic_search.png");
+}
+
+.search_input{
+    border-radius: 20px;
+    border: 1px solid #515151;
+    height: 25px;
+    width: 180px;
+    margin: 0 5px;
+    text-indent: 1em;
+    font-size: 12px;
+}
+
+.search_input:hover{
+    border: 1px solid #57c2a4;
+}
+
+.left_span{
+    height: 100%;
+    background: #f9f9f9;
+}
+
+/*note_list*/
+.note_list{
+    width: 100%;
+}
+
+.note_ico{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.note_title{
+    margin: 0;
+    padding: 0;
+}
+
+.note_info{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+.note_item{
+    padding: 5px 0;
+    width: 260px;
+}
+
+.note_item:hover{
+    background: #fff;
+}
+
+/*notebook_right*/
+.notebook_right{
+    position: absolute;
+    top: 70px;
+    left: 260px;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    margin: 10px 0 0 10px;
+}
+
+/*notebook_home_header*/
+.notebook_home_header,.home_todo_list{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    margin: 30px;
+}
+
+.greeting{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.home_btn_line{
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+    margin: 20px;
+}
+
+.home_btn_item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.home_btn{
+    width: 50px;
+    height: 50px;
+    background: rgba(17, 168, 126, 0.7);
+    border-radius: 50px;
+    border: 0;
+    box-shadow: 0 3px 3px 0 #e4e4e4;
+    margin: 10px;
+}
+
+.home_btn:hover{
+    background: rgba(17, 168, 126, 0.6);
+}
+
+.home_title{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/*home_todo_list*/
+.nothing_todo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.nothing_todo_icon{
+    width: 200px;
+    height: 200px;
+}
+
+.nothing_todo_text{
+    font-size: 12px;
+    color: #515151;
+}
+
+/*add_dialog_pop*/
+.add_dialog_pop{
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    background: rgba(247, 247, 247, 0.5);
+    z-index: 3;
+}
+
+.add_dialog_body{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1px;
+    height: 1px;
+    border-radius: 300px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 3px 3px 3px 3px #e4e4e4;
+}
+
+.add_pop_inner{
+    display: none;
+}
+
+.add_note_icon{
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+    border-radius: 70px;
+}
+
+.add_note_icon_mask{
+    position: absolute;
+    top: 50px;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    border-radius: 70px;
+}
+
+.add_note_icon_mask:hover{
+    background: rgba(228, 228, 228, 0.5);
+    color: #000;
+    font-size: 12px;
+    content: "换图标";
+}
+
+.add_note_title{
+    width: 230px;
+    height: 30px;
+    margin: 30px 0;
+    background: #f9f9f9;
+    border-radius: 20px;
+    border: 0;
+    text-align: center;
+}
+
+.add_note_submit{
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    border-radius: 20px;
+    background: #57c2a4;
+    border: 0;
+}
+
+.add_note_submit:hover{
+    background: rgba(17, 168, 126, 0.6);
+}

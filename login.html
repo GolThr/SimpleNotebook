@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单记事本-登录</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="styles/global_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/background_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/login_style.css" type="text/css"/>
+    <script>
+        function checkUser(){
+            var username = document.getElementById("username").value;
+            var pwd = document.getElementById("pwd").value;
+            if(username == ""){
+                document.getElementById("user_warning").style.display = "inline";
+                document.getElementById("username").style.border = "#ff4845 solid 0.7px";
+            }else{
+                document.getElementById("user_warning").style.display = "none";
+                document.getElementById("username").style.border = "#e4e4e4 solid 0.7px";
+            }
+            if(pwd == ""){
+                document.getElementById("pwd_warning").style.display = "inline";
+                document.getElementById("pwd").style.border = "#ff4845 solid 0.7px";
+            }else{
+                document.getElementById("pwd_warning").style.display = "none";
+                document.getElementById("pwd").style.border = "#e4e4e4 solid 0.7px";
+            }
+            if(username != "" && pwd != ""){
+                return true;
+            }
+            return false;
+        }
+    </script>
+</head>
+<body class="index_body">
+    <div class="logo">
+        <img src="images/logo.png" alt="logo">
+        <p>简单记事本</p>
+    </div>
+
+    <div class="dialog_body">
+        <p class="dialog_label">登录</p><br>
+        <div>
+            账号<input type="text" name="username" id="username" placeholder="邮箱">
+        </div>
+        <p id="user_warning" class="warning">账号不存在！</p>
+        <div>
+            密码<input type="password" name="pwd" id="pwd" placeholder="密码">
+        </div>
+        <p id="pwd_warning" class="warning">密码不能为空！</p>
+        <a class="forgot_pwd">忘记密码?</a>
+        <div class="login_line">
+            <button type="submit" class="btn_login">登录</button>
+            <a href="register.html"><button type="button" class="btn_register">注册</button></a>
+        </div>
+    </div>
+
+</body>
+</html>

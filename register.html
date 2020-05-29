@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单记事本-注册</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="styles/global_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/background_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/register_style.css" type="text/css"/>
+</head>
+<body class="index_body">
+    <div class="logo">
+        <img src="images/logo.png" alt="logo">
+        <p>简单记事本</p>
+    </div>
+
+    <form action="validate.jsp" method="post" onsubmit="return checkUser()">
+        <div class="dialog_body">
+            <p class="dialog_label">注册</p><br>
+            <div class="register_item">
+                昵称<input type="text" name="nickname" value="" id="username">
+            </div>
+            <p id="user_warning" class="warning">昵称不合法！</p>
+            <div class="register_item">
+                邮箱<input type="email" name="email" value="" id="email">
+            </div>
+            <p id="email_warning" class="warning">邮箱地址不正确！</p>
+            <div class="register_item">
+                密码<input type="password" name="password" value="" id="pwd">
+            </div>
+            <p id="pwd_warning" class="warning">密码不得少于6位！</p>
+
+            <div class="drag" id="drag">
+                <div class="bg"></div>
+                <div class="text" onselectstart="return false;">请拖动滑块验证</div>
+                <div class="btn">&gt;&gt;</div>
+            </div>
+            <script type="text/javascript" src="js/register.js"></script>
+
+
+            <div class="agreement" id="agreement">
+                <input type="checkbox" name="iagree" value="" id="iagree">
+                <a>我已阅读并同意用户协议</a>
+            </div>
+
+
+            <div class="btn_line">
+                <a href="login.html"><button type="button" class="btn_register">已有账号?去登录</button></a>
+                <button type="submit" class="btn_register">注册</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
