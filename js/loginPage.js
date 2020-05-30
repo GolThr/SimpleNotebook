@@ -12,19 +12,27 @@ function toLogin() {
     console.log("Ajax: Login");
     console.log(data);
     $.ajax({
-        url: "../server/login.php", //后台请求数据
+        url: "/SimpleNotebook/server/Login.php", //后台请求数据
         dataType: "json",
-        data: {"intranet_ip":"1922.168.2.1","extranet_ip":"123.124.5.3"},
+        data: data,
         type: "POST",
         success: function (msg) {
             console.log("success!");
             console.log(msg);
-            $("#response").html(msg.responseText);
+            if(msg.successful == '1'){
+                sessionStorage.clear();
+                sessionStorage.setItem('username', msg.nickname);
+                sessionStorage.setItem('email', username);
+                location.href = 'index.html';
+            }else if(msg.successful == '0'){
+                alert('密码错误');
+            }else{
+                location.href = 'login_failed.html';
+            }
         },
         error: function (msg) {
             console.log("error!");
             console.log(msg);
-            $("#response").html(msg.responseText);
         }
     });
 }

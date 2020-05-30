@@ -1,5 +1,5 @@
 document.writeln('<div class="header">\n' +
-    '    <div class="header_left">\n' +
+    '    <div class="header_left" onclick="location.reload()">\n' +
     '        <img class="logo" src="images/logo.png">\n' +
     '        <p class="title">简单记事本</p>\n' +
     '    </div>\n' +
@@ -8,7 +8,7 @@ document.writeln('<div class="header">\n' +
     '        <div class="username" style="display: block" onmouseover="over();" onmouseleave="leave();">\n' +
     '            <div class="show_user">\n' +
     '                <img src="images/head_default_boy.png" alt="head" style="width: 25px; height: 25px"/>\n' +
-    '                <a><%=username%></a>\n' +
+    '                <a class="show_s_username"></a>\n' +
     '            </div>\n' +
     '            <div class="user_info_pop" id="user_info_pop" style="display: none;">\n' +
     '                <div class="pop_arrow">\n' +
@@ -17,13 +17,13 @@ document.writeln('<div class="header">\n' +
     '                <div class="user_info_inner">\n' +
     '                    <div class="user_info_header">\n' +
     '                        <img src="images/head_default_boy.png" alt="head"/>\n' +
-    '                        <a><%=username%></a>\n' +
+    '                        <a class="show_s_username"></a>\n' +
     '                    </div>\n' +
     '                    <div class="user_action_list">\n' +
-    '                        <a>个人资料</a>\n' +
-    '                        <a>修改密码</a>\n' +
-    '                        <a>帮助中心</a>\n' +
-    '                        <a href="login.html">退出</a>\n' +
+    '                        <a id="personal" href="javascript:;">个人资料</a>\n' +
+    '                        <a id="changePWD" href="javascript:;">修改密码</a>\n' +
+    '                        <a id="help" href="javascript:;">帮助中心</a>\n' +
+    '                        <a id="logout" href="javascript:;">退出</a>\n' +
     '                    </div>\n' +
     '                </div>\n' +
     '            </div>\n' +
@@ -41,3 +41,8 @@ function leave() {
     $("#user_info_pop").stop();
     $("#user_info_pop").slideUp("fast");
 }
+
+$('#logout').click(function (e) {
+    sessionStorage.clear();
+    location.href = 'login.html';
+});

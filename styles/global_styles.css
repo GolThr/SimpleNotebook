@@ -1,8 +1,9 @@
 @font-face {
     font-family: 'TsangerXuanSanM-W03';
-    src: url("/fonts/TsangerXuanSanM-W03.ttf");
+    src: url("/SimpleNotebook/fonts/TsangerXuanSanM-W03.ttf");
 }
 
 body{
+    cursor: default;
     font-family: TsangerXuanSanM-W03;
 }
