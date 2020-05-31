@@ -109,6 +109,20 @@ body{
     display: none;
 }
 
+.note_item_none_content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    height: 70px;
+}
+
+.note_item_none_ico{
+    width: 70px;
+    height: auto;
+}
+
 .note_item{
     display: flex;
     flex-direction: row;
@@ -135,6 +149,19 @@ body{
 }
 
 /*tools_line*/
+.title_tool_head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #f1f1f1;
+}
+
+.page_title{
+    margin: 5px 0;
+    padding: 10px 0;
+}
+
 .tools_line{
     display: flex;
     flex-direction: row;
@@ -194,13 +221,135 @@ body{
     resize: none;
 }
 
+/*book_list*/
+.books_list_content{
+    width: 97%;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.book_item_content{
+    width: 80px;
+    height: 110px;
+    margin: 10px 0 0 10px;
+    background: #57c2a4;
+    border-radius: 5px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.book_item_content:hover{
+    background: #8fd5c2;
+}
+
+.book_title_content{
+    width: 100%;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.book_item_delete_btn{
+    width: 15px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 3px;
+}
+
+.book_item_title{
+    width: 100%;
+    text-align: center;
+}
+
+.book_item_date{
+    width: 100%;
+    font-size: 10px;
+    text-align: center;
+}
+
+/*todo_list*/
+.todo_list_head{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 0 0;
+}
+
+.todo_list_content{
+    height: 79%;
+    margin-top: 10px;
+    overflow: auto;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.todo_list_content::-webkit-scrollbar{
+    display: none;
+}
+
+.todo_item_content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.todo_item_content:hover{
+    background: #f0ffff;
+}
+
+.to_do_item_finished{
+    text-decoration: line-through;
+}
+
+.todo_item_title{
+    width: 20%;
+    overflow: hidden;
+}
+
+.todo_item_info{
+    width: 46%;
+    overflow: hidden;
+}
+
+.todo_item_date{
+    width: 13%;
+    overflow: hidden;
+}
+
+.todo_item_finish_date{
+    width: 13%;
+    overflow: hidden;
+}
+
+.todo_item_delete_btn{
+    cursor: pointer;
+    width: 15px;
+    height: auto;
+    margin-right: 20px;
+}
+
 /*notebook_home_header*/
 .notebook_home_header,.home_todo_list{
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start;
     justify-content: center;
-    margin: 30px;
+    margin: 30px 30px 0 30px;
 }
 
 .greeting{
@@ -244,6 +393,55 @@ body{
 }
 
 /*home_todo_list*/
+.home_today_todos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    scrollbar-width: none;
+    margin-top: 25px;
+}
+
+.today_todo_item{
+    width: 90px;
+    height: 130px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #57c2a4;
+    color: #fff;
+}
+
+.today_todo_content{
+    width: 100%;
+    height: 105px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.today_todo_item_info{
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.today_todo_item_complete{
+    cursor: pointer;
+    width: 100%;
+    height: 15px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 .nothing_todo{
     display: flex;
     flex-direction: column;
@@ -340,3 +538,42 @@ body{
 .add_note_submit:hover{
     background: rgba(17, 168, 126, 0.6);
 }
+
+.choose_dialog_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 3px 3px 3px 3px #e4e4e4;
+}
+
+.choose_book_pop_title{
+    width: 100%;
+    text-align: left;
+    text-indent: 1em;
+}
+
+.show_todo_date_line{
+    width: 100%;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 2px dashed rgba(228, 228, 228, 0.5);
+}
+
+.show_todo_pop_date{
+    margin-left: 25px;
+}
+
+.show_todo_pop_info{
+    width: 95%;
+    margin-top: 20px;
+    text-align: left;
+}
+

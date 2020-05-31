@@ -24,12 +24,12 @@
         <div class="notebook_left">
             <div class="list_header">
                 <img class="add_btn" id="add_btn" src="images/ic_add.png" alt="add" onmouseover="onAddBtn();" onmouseleave="leaveAddBtn();" onclick="onAddNoteBtn();">
-                <input class="search_input" type="text" name="search_str" placeholder="在本子 记事本 中搜索..." onfocus="this.select()">
+                <input class="search_input" id="search_input" type="text" name="search_str" placeholder="在本子 记事本 中搜索..." onfocus="this.select()">
                 <img class="search_btn" id="search_btn" src="images/ic_search.png" alt="search" onmouseover="onSearchBtn();" onmouseleave="leaveSearchBtn();">
             </div>
             <!--List-->
             <div class="note_list_content" id="note_list_content">
-                <div class="note_item 1" index="12" onclick="showNoteItem($(this))">
+                <div class="note_item" index="0" onclick="showNoteItem($(this))">
                     <img class="note_ico" src="images/notes.png" alt="note_ico">
                     <div class="note_info_content">
                         <h5 class="note_list_title">使用说明</h5>
@@ -43,7 +43,7 @@
 
         <!--Pages-->
         <!--1.home-->
-        <div class="notebook_right" id="home">
+        <div class="notebook_right notebook_right_home" id="home">
             <div class="notebook_home_header">
                 <span class="greeting"></span>
                 <span class="today_date"></span>
@@ -53,20 +53,23 @@
                     <img class="home_btn" src="images/ic_add_home.png" alt="add"/>
                     <span>笔记</span>
                 </div>
-                <div class="home_btn_item home_btn_books">
+                <div class="home_btn_item home_btn_books" onclick="showBooksList()">
                     <img class="home_btn" src="images/ic_note_home.png" alt="notes"/>
                     <span>本子</span>
                 </div>
-                <div class="home_btn_item home_btn_todo">
+                <div class="home_btn_item home_btn_todo" onclick="showTodosList()">
                     <img class="home_btn" src="images/ic_todo.png" alt="notes"/>
                     <span>待办</span>
                 </div>
             </div>
             <div class="home_todo_list">
                 <span class="home_title">看看今天都要做哪些事呢？</span>
-                <div class="nothing_todo">
-                    <img class="nothing_todo_icon" src="images/ic_nothing_todo.png" alt="nothingToDo"/>
-                    <span class="nothing_todo_text">今天还没有要做的事情哦</span>
+                <!--Today_Todo_List-->
+                <div class="home_today_todos" id="today_todo_list">
+                    <div class="nothing_todo">
+                        <img class="nothing_todo_icon" src="images/ic_nothing_todo.png" alt="nothingToDo"/>
+                        <span class="nothing_todo_text">今天还没有要做的事情哦</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,8 +77,8 @@
         <div class="notebook_right" id="noteItemShow" style="display: none;">
             <div class="tools_line" style="margin: 0 20px;">
                 <span class="tools_item" onclick="onEditNote()">编辑</span>
-                <span class="tools_item">移动</span>
-                <span class="tools_item">删除</span>
+                <span class="tools_item" onclick="onMoveNote()">移动</span>
+                <span class="tools_item" onclick="deleteNoteItem()">删除</span>
             </div>
             <h1 class="note_title" id="note_title"></h1>
             <div class="note_content" id="note_content" style="margin: 0 20px; overflow: scroll;"></div>
@@ -83,18 +86,58 @@
         <!--3.edit_note-->
         <div class="notebook_right" id="noteItemEdit" style="display: none;">
             <div class="tools_line" style="margin: 0 20px;">
-                <span class="tools_item" style="background: #57c2a4;color: #fff;" onclick="modifyNoteItem()">完成</span>
+                <span class="tools_item" id="finish_edit_note" style="background: #57c2a4;color: #fff;">完成</span>
             </div>
             <input class="note_title" type="text" id="note_edit_title"/>
             <textarea class="note_content" id="note_edit_content"></textarea>
         </div>
         <!--4.show_book-->
         <div class="notebook_right" id="booksShow" style="display: none;">
-
+            <div class="title_tool_head">
+                <h1 class="page_title">本子</h1>
+                <div class="tools_line" style="margin: 0 20px;">
+                    <span class="tools_item" onclick="addBookItem()">添加</span>
+                    <span class="tools_item" onclick="onDeleteBook()">删除</span>
+                </div>
+            </div>
+            <!--books_list-->
+            <div class="books_list_content" id="books_list">
+                <div class="book_item_content" index="1" bookname="记事本" onclick="showBookItem($(this))">
+                    <div class="book_title_content">
+                        <img class="book_item_delete_btn" index="1" src="images/ic_delete.png" style="display: none" onclick="deleteBookItem($(this))"/>
+                        <span class="book_item_title">记事本</span>
+                    </div>
+                    <span class="book_item_date">2020-05-30</span>
+                </div>
+            </div>
         </div>
         <!--5.show_todo-->
         <div class="notebook_right" id="todosShow" style="display: none;">
-
+            <div class="title_tool_head">
+                <h1 class="page_title">待办事项</h1>
+                <div class="tools_line" style="margin: 0 20px;">
+                    <span class="tools_item" onclick="addTodoItem()">添加</span>
+                </div>
+            </div>
+            <div class="todo_list_head">
+                <span class="todo_item_title">标题</span>
+                <span class="todo_item_info">详情</span>
+                <span class="todo_item_date">创建时间</span>
+                <span class="todo_item_finish_date">待办时间</span>
+                <span class="todo_item_delete_btn"></span>
+                <span class="todo_item_delete_btn"></span>
+            </div>
+            <!--todos_list-->
+            <div class="todo_list_content" id="todos_list">
+                <div class="todo_item_content" index="1" onclick="getTodoItem($(this))">
+                    <span class="todo_item_title">标题</span>
+                    <span class="todo_item_info">详情</span>
+                    <span class="todo_item_date">创建时间</span>
+                    <span class="todo_item_finish_date">待办时间</span>
+                    <img class="todo_item_delete_btn" index="1" src="images/ic_complete.png" onclick="completeTodoItem($(this));event.stopPropagation();"/>
+                    <img class="todo_item_delete_btn" index="1" src="images/ic_del_trash.png" onclick="deleteTodoItem($(this));event.stopPropagation();"/>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -103,8 +146,59 @@
             <img class="add_note_icon add_pop_inner" src="images/notes.png" alt="icon"/>
             <span class="add_note_icon_mask add_pop_inner" onmouseover="onMask()" onmouseleave="leaveMask()"></span>
 
-            <input class="add_note_title add_pop_inner" type="text" AUTOCOMPLETE="off" value="新建笔记" onfocus="this.select()">
-            <button class="add_note_submit add_pop_inner">创建</button>
+            <input class="add_note_title add_pop_inner" id="new_note_name" type="text" AUTOCOMPLETE="off" value="新建笔记" onfocus="this.select()">
+            <button class="add_note_submit add_pop_inner" onclick="onCreateNote()">创建</button>
+        </div>
+    </div>
+
+    <div class="add_dialog_pop" id="book_add_dialog_pop" style="display: none">
+        <div class="add_dialog_body" id="book_add_dialog_body">
+            <img class="add_note_icon book_add_pop_inner" src="images/books.png" alt="icon" style="border-radius: 0;"/>
+
+            <input class="add_note_title book_add_pop_inner" id="book_new_name" type="text" AUTOCOMPLETE="off" value="新建本子" onfocus="this.select()">
+            <button class="add_note_submit book_add_pop_inner" onclick="onCreateBook()">创建</button>
+        </div>
+    </div>
+
+    <div class="add_dialog_pop" id="todo_add_dialog_pop" style="display: none">
+        <div class="add_dialog_body" id="todo_add_dialog_body">
+            <img class="add_note_icon todo_add_pop_inner" src="images/books.png" alt="icon" style="border-radius: 0;"/>
+
+            <input class="add_note_title todo_add_pop_inner" id="todo_new_name" type="text" AUTOCOMPLETE="off" value="新建待办" onfocus="this.select()" style="margin: 5px 0;">
+            <input class="add_note_title todo_add_pop_inner" id="todo_new_info" type="text" AUTOCOMPLETE="off" value="待办内容" style="margin: 5px 0;">
+            <div>
+                <span class="add_note_title todo_add_pop_inner" style="width: 80px;">待办日期</span>
+                <input class="add_note_title todo_add_pop_inner" id="todo_new_date" type="date" AUTOCOMPLETE="off" style="width: 150px;margin: 5px 0 10px 0;">
+            </div>
+            <button class="add_note_submit todo_add_pop_inner" onclick="onCreateTodo()">创建</button>
+        </div>
+    </div>
+
+    <div class="add_dialog_pop" id="choose_book_dialog_pop" style="display: none">
+        <div class="choose_dialog_body" id="choose_book_dialog_body">
+            <h2 class="choose_book_pop_title">请选择一个本子</h2>
+            <!--books_list-->
+            <div class="books_list_content" id="books_list_dialog" style="margin: 0 0 20px 0;">
+                <div class="book_item_content" index="1" bookname="记事本" onclick="moveNoteItem($(this))">
+                    <div class="book_title_content">
+                        <span class="book_item_title">记事本</span>
+                    </div>
+                    <span class="book_item_date">2020-05-30</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="add_dialog_pop" id="show_todo_dialog_pop" style="display: none">
+        <div class="choose_dialog_body" id="show_todo_dialog_body" style="width: 80%;">
+            <h2 class="choose_book_pop_title" id="show_todo_dialog_title"></h2>
+            <div class="show_todo_date_line">
+                <span class="show_todo_pop_date">创建时间: </span>
+                <span class="show_todo_pop_date" id="show_todo_date" style="margin-right: 10px;"></span>
+                <span class="show_todo_pop_date">完成时间: </span>
+                <span class="show_todo_pop_date" id="show_todo_finish"></span>
+            </div>
+            <p class="show_todo_pop_info" id="show_todo_info"></p>
         </div>
     </div>
 

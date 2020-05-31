@@ -1,5 +1,5 @@
 document.writeln('<div class="header">\n' +
-    '    <div class="header_left" onclick="location.reload()">\n' +
+    '    <div class="header_left" onclick="changeView(\'home\');getTodayTodos();">\n' +
     '        <img class="logo" src="images/logo.png">\n' +
     '        <p class="title">简单记事本</p>\n' +
     '    </div>\n' +
